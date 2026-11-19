@@ -3,6 +3,8 @@
 An unofficial, fan-made GTA VI progression tracker built from `GTA6_Progress_Tracker.xlsx`.
 It's a static site (plain HTML/CSS/JS, no build step) in `site/`.
 
+**Live site:** https://suryavamsikk.github.io/gta6-progress-tracker/ (redeploys automatically on every push to `main`).
+
 ## Run it
 
 ```bash
