@@ -1,0 +1,18 @@
+# Office lock files
+~$*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+
+# Claude Code local settings (launch.json is kept so the preview server config is shared)
+.claude/settings.local.json
+
+# Local art references (game screenshots, not part of the site)
+References/
