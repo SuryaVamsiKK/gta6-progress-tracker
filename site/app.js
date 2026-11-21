@@ -537,6 +537,12 @@
     render(0);
   }
 
+  // Animate just the check that was clicked, not every row in the freshly rendered list.
+  function popCheck(act, id) {
+    const b = view.querySelector(`.mcheck[data-act="${act}"][data-id="${CSS.escape(String(id))}"]`);
+    if (b) b.classList.add('pop');
+  }
+
   /* ---------------- Events ---------------- */
   document.addEventListener('click', (e) => {
     const goEl = e.target.closest('[data-go]');
@@ -567,7 +573,7 @@
         const m = D.missions.items.find((x) => x.id === +id), nx = STATUSES[(STATUSES.indexOf(missStatus(m)) + 1) % STATUSES.length];
         S.miss[id] = { ...(S.miss[id] || {}), status: nx };
         if (nx === 'Completed') banner('Mission Complete', m.name); else if (nx === 'Missed') sfx.down(); else sfx.nav();
-        commit(); break;
+        commit(); popCheck('status', id); break;
       }
       case 'char': {
         const m = D.missions.items.find((x) => x.id === +id), nx = CHARS[(CHARS.indexOf(missChar(m)) + 1) % CHARS.length];
@@ -585,7 +591,7 @@
         const t = TL.find((x) => x.id === id); if (!t || trophyAuto(t)) return;
         S.known[id] = !trophyManual(t);
         if (!S.known[id]) sfx.down();
-        commit(); break;
+        commit(); popCheck('trophy', id); break;
       }
       case 'export': {
         const blob = new Blob([JSON.stringify({ app: 'leonida-tracker', version: 1, savedAt: new Date().toISOString(), state: S }, null, 2)], { type: 'application/json' });

@@ -320,8 +320,11 @@ kbd {
   display: grid; place-items: center; font: 800 17px/1 var(--f-body); color: transparent; transition: background .3s, border-color .3s, transform .3s var(--spring), box-shadow .3s; }
 .mcheck:hover:not(:disabled) { border-color: var(--pink); transform: scale(1.1); box-shadow: 0 0 0 4px rgba(255, 126, 182, .15); }
 .mcheck:active:not(:disabled) { transform: scale(.9); }
-.mcheck.m-Completed { background: linear-gradient(160deg, #6ff0d8, #33c2a5); border-color: transparent; color: #0d2a26; box-shadow: 0 0 16px rgba(111, 227, 214, .45); animation: checkPop .5s var(--spring); }
-.mcheck.m-Missed { background: rgba(255, 95, 109, .25); border-color: rgba(255, 120, 130, .7); color: #ffb0b0; animation: checkShake .4s; }
+.mcheck.m-Completed { background: linear-gradient(160deg, #6ff0d8, #33c2a5); border-color: transparent; color: #0d2a26; box-shadow: 0 0 16px rgba(111, 227, 214, .45); }
+.mcheck.m-Missed { background: rgba(255, 95, 109, .25); border-color: rgba(255, 120, 130, .7); color: #ffb0b0; }
+/* Only the check the user just clicked animates (lists are re-rendered on every change). */
+.mcheck.m-Completed.pop { animation: checkPop .5s var(--spring); }
+.mcheck.m-Missed.pop { animation: checkShake .4s; }
 .mcheck:disabled { cursor: default; }
 @keyframes checkPop { 0% { transform: scale(.4) rotate(-30deg); } 60% { transform: scale(1.2); } }
 @keyframes checkShake { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
